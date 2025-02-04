@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=5 format=4 uid="uid://xg0ta3y1p82u"]
+=======
+[gd_scene load_steps=5 format=4 uid="uid://t8gxyndbu3eu"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://cp3pn7y5bepu8" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_febe0"]
 [ext_resource type="PackedScene" uid="uid://baou05s22310a" path="res://Character/player.tscn" id="2_7ib6a"]
@@ -507,6 +511,12 @@ tile_set = SubResource("TileSet_04hgc")
 
 [node name="Player" parent="." instance=ExtResource("2_7ib6a")]
 position = Vector2(47, -45)
+<<<<<<< Updated upstream
+=======
+SPEED = null
+JUMP_VELOCITY = null
+DOUBLE_JUMP_VELOCITY = null
+>>>>>>> Stashed changes
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
