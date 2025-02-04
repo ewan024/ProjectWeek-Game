@@ -507,7 +507,9 @@ tile_set = SubResource("TileSet_04hgc")
 
 [node name="Player" parent="." instance=ExtResource("2_7ib6a")]
 position = Vector2(47, -45)
-double_jump_velocity = -300.0
+SPEED = null
+JUMP_VELOCITY = null
+DOUBLE_JUMP_VELOCITY = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
