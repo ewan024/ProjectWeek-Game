@@ -1,6 +1,13 @@
-[gd_scene format=3 uid="uid://hqdecdjhww83"]
+[gd_scene load_steps=2 format=3 uid="uid://hqdecdjhww83"]
+
+[sub_resource type="TileSet" id="TileSet_04hgc"]
 
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_04hgc")
 format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+tile_set = SubResource("TileSet_04hgc")
