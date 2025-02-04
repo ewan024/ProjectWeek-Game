@@ -16,6 +16,12 @@ config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="res://Scenes/UI.tscn"
 
+[display]
+
+window/size/mode=3
+window/size/borderless=true
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="Halo&Hell"
