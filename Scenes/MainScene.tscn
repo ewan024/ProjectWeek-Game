@@ -506,8 +506,8 @@ tile_map_data = PackedByteArray("AAD+/wAAAAACAAEAAAD+/wEAAAACAAIAAAD+/wIAAAACAAM
 tile_set = SubResource("TileSet_04hgc")
 
 [node name="Player" parent="." instance=ExtResource("2_7ib6a")]
-position = Vector2(47, -45)
-double_jump_velocity = -300.0
+position = Vector2(48, -39)
+scale = Vector2(1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
