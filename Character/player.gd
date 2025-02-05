@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 		if was_in_air == true:
 			land()
 			
-			was_in_air = false
+		was_in_air = false
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
@@ -32,13 +32,12 @@ func _physics_process(delta: float) -> void:
 			jump()
 		elif not has_double_jumped:
 			velocity.y = double_jump_velocity
-			has_double_jumped = true
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_vector("left", "right", "up", "down")
 	
-	if direction:
+	if direction.x != 0 && animated_sprite.animation != "jump_end":
 		velocity.x = direction.x * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
@@ -46,13 +45,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	update_animation()
 	update_facing_direction()
+	_on_animated_sprite_2d_animation_finished()
 	
 func update_animation():
 	if not animation_locked:
-		if direction.x != 0:
-			animated_sprite.play("run")
+		if not is_on_floor():
+			animated_sprite.play("jump_loop")
 		else:
-			animated_sprite.play("idle")
+			if direction.x != 0:
+				animated_sprite.play("run")
+			else:
+				animated_sprite.play("idle")
 			
 func update_facing_direction():
 	if direction.x > 0:
@@ -64,11 +67,17 @@ func jump():
 	velocity.y = jump_velocity
 	animated_sprite.play("jump_start")
 	animation_locked = true
+	
+func double_jump():
+	velocity.y = double_jump_velocity
+	animated_sprite.play("double_jump")
+	animation_locked = true
+	has_double_jumped = true
 
 func land():
 	animated_sprite.play("jump_end")
 	animation_locked = true
 	
 func _on_animated_sprite_2d_animation_finished():
-	if(animated_sprite.animation == "jump_end"):
+	if(["jump_end", "jump_start", "double_jump"].has(animated_sprite.animation)):
 		animation_locked = false
