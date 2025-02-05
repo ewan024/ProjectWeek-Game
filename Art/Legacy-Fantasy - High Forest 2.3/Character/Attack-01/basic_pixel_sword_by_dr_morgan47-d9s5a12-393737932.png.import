@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyeq60bpkn5a6"
-path="res://.godot/imported/Attack-01-Sheet.png-b576b76d94a60e8262d87fecce044e49.ctex"
+uid="uid://2sk0tlpvggtm"
+path="res://.godot/imported/basic_pixel_sword_by_dr_morgan47-d9s5a12-393737932.png-92029c32ca71ac081adb8a78518cb0b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png"
-dest_files=["res://.godot/imported/Attack-01-Sheet.png-b576b76d94a60e8262d87fecce044e49.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/basic_pixel_sword_by_dr_morgan47-d9s5a12-393737932.png"
+dest_files=["res://.godot/imported/basic_pixel_sword_by_dr_morgan47-d9s5a12-393737932.png-92029c32ca71ac081adb8a78518cb0b2.ctex"]
 
 [params]
 
