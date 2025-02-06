@@ -1,0 +1,14 @@
+res://Scenes/MainMenu.tscn
+res://Scenes/MainScene.tscn
+res://Scripts/startGame.cs
+res://Scenes/SettingsMenu.cs
+res://Scripts/StartGame.cs
+res://Scripts/Node2d.cs
+res://Scenes/StartGame.cs
+res://Scripts/SettingsMenu.cs
+res://Scenes/play.gd
+res://Scripts/Music.cs
+res://Scripts/MainButtons.cs
+res://Scenes/node_2d.tscn
+res://Scenes/dash.gd
+res://Character/player.gd
