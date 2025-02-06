@@ -14,6 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked : bool = false
 var direction : Vector2 = Vector2.ZERO
 var can_attack := true
+var can_take_damage := true
 
 const dashspeed = 800
 const dashlength = .1
@@ -66,9 +67,9 @@ func _input(event):
 func attack():
 	can_attack = false
 	animated_sprite.play("attack")
-	attack_area.monitoring = true
+	attack_hitbox.monitoring = true
 	await animated_sprite.animation_finished
-	attack_area.monitoring = false
+	attack_hitbox.monitoring = false
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 	

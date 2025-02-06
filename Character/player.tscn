@@ -75,14 +75,11 @@ radius = 17.0
 height = 44.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aycqd"]
+size = Vector2(30, 40)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.1, 0.1)
 script = ExtResource("1_eidlo")
-NORMALSPEED = null
-JUMP_VELOCITY = null
-attack_cooldown = null
-attack_damage = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -16)
@@ -95,10 +92,10 @@ autoplay = "idle"
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_oa15d")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-30, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-35, -1.78814e-06)
 shape = SubResource("RectangleShape2D_aycqd")
 disabled = true
 
