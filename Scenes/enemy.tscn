@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv7xn782r4vgq"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_o88cg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kg67y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7ujt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0yv7"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_o88cg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kg67y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_q7ujt")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_l0yv7")
+disabled = true
