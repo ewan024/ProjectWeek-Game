@@ -14,7 +14,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked : bool = false
 var direction : Vector2 = Vector2.ZERO
 var can_attack := true
-var can_take_damage := true
 
 const dashspeed = 800
 const dashlength = .1

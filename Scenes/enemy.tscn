@@ -17,9 +17,8 @@ sprite_frames = SubResource("SpriteFrames_kg67y")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_q7ujt")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-30, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_l0yv7")
 disabled = true
