@@ -1,18 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwe3i4wxd7x8n"]
-[gd_scene load_steps=7 format=3 uid="uid://d23pn46hb1ued"]
-[gd_scene load_steps=7 format=3 uid="uid://d23pn46hb1ued"]
-[gd_scene load_steps=7 format=3 uid="uid://d23pn46hb1ued"]
-[gd_scene load_steps=7 format=3 uid="uid://d23pn46hb1ued"]
+[gd_scene load_steps=2 format=3 uid="uid://cmmr4rfjvv38y"]
 
-[ext_resource type="Script" path="res://Scripts/StartGame.cs" id="1_44r8x"]
-[ext_resource type="Script" path="res://Scripts/Music.cs" id="1_a64rc"]
-[ext_resource type="Script" path="res://Scripts/SettingsMenu.cs" id="2_m2ohe"]
-[ext_resource type="AudioStream" uid="uid://ewp2miu3guhs" path="res://Audio/bg-music.mp3" id="3_slsur"]
-
-[sub_resource type="CSharpScript" id="CSharpScript_dldp7"]
-
-[sub_resource type="Theme" id="Theme_onkfk"]
-script = SubResource("CSharpScript_dldp7")
+[ext_resource type="Script" path="res://Scripts/MainButtons.cs" id="1_pytjn"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -21,71 +9,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a64rc")
 
-[node name="BackGround" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-theme = SubResource("Theme_onkfk")
-color = Color(0.508532, 0.489264, 0.746031, 1)
+color = Color(0.389808, 0.526252, 0.579228, 1)
 
-[node name="Menu" type="VBoxContainer" parent="."]
+[node name="MainButtons" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 420.0
-offset_top = 225.0
-offset_right = 721.0
-offset_bottom = 404.0
-alignment = 1
-script = ExtResource("1_44r8x")
+offset_left = 381.0
+offset_top = 201.0
+offset_right = 756.0
+offset_bottom = 417.0
+script = ExtResource("1_pytjn")
 
-[node name="Play" type="Button" parent="Menu"]
+[node name="Play" type="Button" parent="MainButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Play"
 
-[node name="Settings" type="Button" parent="Menu"]
+[node name="Settings" type="Button" parent="MainButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Settings"
 
-[node name="Quit" type="Button" parent="Menu"]
+[node name="Quit" type="Button" parent="MainButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Quit"
 
-[node name="SettingsMenu" type="Control" parent="."]
+[node name="Control" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-script = ExtResource("2_m2ohe")
-
-[node name="Volume" type="HSlider" parent="SettingsMenu"]
-layout_mode = 0
-offset_left = 79.0
-offset_top = 347.0
-offset_right = 222.0
-offset_bottom = 414.0
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[node name="Label" type="Label" parent="SettingsMenu"]
-layout_mode = 0
-offset_left = 83.0
-offset_top = 350.0
-offset_right = 147.0
-offset_bottom = 373.0
-text = "Volume:"
-
-[node name="Back" type="Button" parent="SettingsMenu"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 15.0
-offset_right = 120.0
-offset_bottom = 82.0
-theme_override_font_sizes/font_size = 43
-text = "Back"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_slsur")
