@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://1wsksw0lq6oc"]
+[gd_scene load_steps=6 format=4 uid="uid://hqdecdjhww83"]
 
 [ext_resource type="Texture2D" uid="uid://cp3pn7y5bepu8" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_febe0"]
 [ext_resource type="PackedScene" uid="uid://baou05s22310a" path="res://Character/player.tscn" id="2_7ib6a"]
-[ext_resource type="PackedScene" uid="uid://ba6eqnddx48g0" path="res://Scenes/dash.tscn" id="3_aculq"]
+[ext_resource type="PackedScene" path="res://Scenes/dash.tscn" id="3_aculq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cpfi4"]
 texture = ExtResource("1_febe0")
