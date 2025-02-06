@@ -3,11 +3,17 @@ extends CharacterBody2D
 
 @export var NORMALSPEED : float = 200.0
 @export var JUMP_VELOCITY : float = -250.0
+@export var attack_cooldown := 0.5
+@export var attack_damage := 10
+
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_hitbox = $AttackHitbox
+
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked : bool = false
 var direction : Vector2 = Vector2.ZERO
+var can_attack := true
 
 const dashspeed = 800
 const dashlength = .1
@@ -21,6 +27,9 @@ func _physics_process(delta):
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		
+	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	if Input.is_action_just_pressed("dash"):
@@ -49,3 +58,20 @@ func update_facing_directions():
 		animated_sprite.flip_h = true
 	elif direction.x < 0:
 		animated_sprite.flip_h = false
+		
+func _input(event):
+	if event.is_action_pressed("attack") and can_attack:
+		attack()
+		
+func attack():
+	can_attack = false
+	animated_sprite.play("attack")
+	attack_area.monitoring = true
+	await animated_sprite.animation_finished
+	attack_area.monitoring = false
+	await get_tree().create_timer(attack_cooldown).timeout
+	can_attack = true
+	
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("enemies"):
+		body.take_damage(10)
