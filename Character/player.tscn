@@ -59,6 +59,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oa15d"]
+radius = 17.0
 height = 44.0
 
 [node name="Player" type="CharacterBody2D"]
@@ -66,7 +67,7 @@ scale = Vector2(0.1, 0.1)
 script = ExtResource("1_eidlo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(-3, -16)
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_whshq")
 animation = &"run"
