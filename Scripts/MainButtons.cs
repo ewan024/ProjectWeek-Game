@@ -2,7 +2,7 @@ namespace HaloHell.Scripts;
 
 using Godot;	
 
-public partial class StartGame : VBoxContainer
+public partial class MainButtons : VBoxContainer
 {
 	private Button _playButton;
 	private Button _settingsButton;
