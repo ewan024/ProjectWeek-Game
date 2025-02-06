@@ -1,6 +1,13 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://cwe3i4wxd7x8n"]
+=======
+[gd_scene load_steps=7 format=3 uid="uid://d23pn46hb1ued"]
+>>>>>>> Stashed changes
 
-[ext_resource type="Script" path="res://Scripts/StartGame.cs" id="1_mlc02"]
+[ext_resource type="Script" path="res://Scripts/StartGame.cs" id="1_44r8x"]
+[ext_resource type="Script" path="res://Scripts/Music.cs" id="1_a64rc"]
+[ext_resource type="Script" path="res://Scripts/SettingsMenu.cs" id="2_m2ohe"]
+[ext_resource type="AudioStream" uid="uid://ewp2miu3guhs" path="res://Audio/bg-music.mp3" id="3_slsur"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_dldp7"]
 
@@ -14,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_a64rc")
 
 [node name="BackGround" type="ColorRect" parent="."]
 layout_mode = 0
@@ -29,7 +37,7 @@ offset_top = 225.0
 offset_right = 721.0
 offset_bottom = 404.0
 alignment = 1
-script = ExtResource("1_mlc02")
+script = ExtResource("1_44r8x")
 
 [node name="Play" type="Button" parent="Menu"]
 layout_mode = 2
@@ -50,13 +58,17 @@ text = "Quit"
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+script = ExtResource("2_m2ohe")
 
-[node name="HSlider" type="HSlider" parent="SettingsMenu"]
+[node name="Volume" type="HSlider" parent="SettingsMenu"]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 348.0
-offset_right = 224.0
-offset_bottom = 415.0
+offset_left = 79.0
+offset_top = 347.0
+offset_right = 222.0
+offset_bottom = 414.0
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [node name="Label" type="Label" parent="SettingsMenu"]
 layout_mode = 0
@@ -66,7 +78,7 @@ offset_right = 147.0
 offset_bottom = 373.0
 text = "Volume:"
 
-[node name="Button" type="Button" parent="SettingsMenu"]
+[node name="Back" type="Button" parent="SettingsMenu"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 15.0
@@ -74,3 +86,6 @@ offset_right = 120.0
 offset_bottom = 82.0
 theme_override_font_sizes/font_size = 43
 text = "Back"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_slsur")
