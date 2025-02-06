@@ -1,16 +1,14 @@
 extends CharacterBody2D
 
+class_name KnightEnemy
 
+const speed = 10
+var is_knight_chase: bool
 
-var speed = 100
-var direction = Vector2.LEFT
-var health := 20 
+var health = 80
+var health_max = 80
+var health_min = 0
 
-func _process(delta):
-	move_and_slide(direction * speed)
-
-
-func take_damage(amount):
-	health -= amount
-	if health <= 0:
-		queue_free(	)
+var dead: bool = false
+var taking_damage: bool = false
+var damage_to_deal = 20

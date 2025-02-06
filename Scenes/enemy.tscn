@@ -1,31 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv7xn782r4vgq"]
+[gd_scene load_steps=6 format=3 uid="uid://bv7xn782r4vgq"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_o88cg"]
+[ext_resource type="Texture2D" uid="uid://hnuj41o8vyfj" path="res://Art/Eigen Art/1.png" id="2_ajo4f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhgfm"]
+atlas = ExtResource("2_ajo4f")
+region = Rect2(0, 0, 1573, 1600)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kg67y"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhgfm")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7ujt"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0yv7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpkev"]
+size = Vector2(20, 30)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_o88cg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -5)
+scale = Vector2(0.025, 0.025)
 sprite_frames = SubResource("SpriteFrames_kg67y")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_q7ujt")
+shape = SubResource("RectangleShape2D_lpkev")
 
-[node name="Hitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_l0yv7")
-disabled = true
+[node name="DirectionTimer" type="Timer" parent="."]
