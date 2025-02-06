@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_hitbox = $AttackHitbox
-
+@onready var dash = $Dash
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked : bool = false
@@ -19,7 +19,6 @@ var can_take_damage := true
 const dashspeed = 800
 const dashlength = .1
 
-@onready var dash = $Dash
 
 func _physics_process(delta):
 	# Add the gravity.
