@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var attack_damage := 10
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var attack_hitbox = $AttackHitbox
+@onready var attack_hitbox : Area2D = $AttackHitbox
 @onready var dash = $Dash
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -64,13 +64,11 @@ func _input(event):
 		
 func attack():
 	can_attack = false
-	animated_sprite.play("attack")
 	attack_hitbox.monitoring = true
-	await animated_sprite.animation_finished
-	attack_hitbox.monitoring = false
+	attack_hitbox.visible
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 	
-func _on_Area2D_body_entered(body):
-	if body.is_in_group("enemies"):
-		body.take_damage(10)
+func _on_AttackHitbox_body_entered(body):
+	if body.is_in_group("enemies"):  
+		body.take_damage(attack_damage) 
