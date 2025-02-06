@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxj26rae5gm84"]
 
-[ext_resource type="Script" path="res://Scripts/MainButtons.cs" id="1_pytjn"]
+[ext_resource type="Script" path="res://Scripts/MainButtons.cs" id="1_jo3x7"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -22,7 +22,7 @@ offset_left = 381.0
 offset_top = 201.0
 offset_right = 756.0
 offset_bottom = 417.0
-script = ExtResource("1_pytjn")
+script = ExtResource("1_jo3x7")
 
 [node name="Play" type="Button" parent="MainButtons"]
 layout_mode = 2
