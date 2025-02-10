@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxj26rae5gm84"]
+[gd_scene load_steps=7 format=3 uid="uid://dxj26rae5gm84"]
 
-[ext_resource type="Script" path="res://Scripts/MainButtons.cs" id="1_jo3x7"]
+[ext_resource type="Script" path="res://Scripts/MainButtons.cs" id="1_7yp3y"]
+[ext_resource type="Script" path="res://Scripts/Music.cs" id="1_ic0wb"]
+[ext_resource type="Script" path="res://Scripts/SettingsMenu.cs" id="2_v0bo2"]
+[ext_resource type="Script" path="res://Scripts/Resolution.cs" id="4_11ea8"]
+[ext_resource type="Script" path="res://Scripts/FullScreen.cs" id="5_oftl1"]
+[ext_resource type="AudioStream" uid="uid://bj5e70tfhqqjv" path="res://audio/Colorful-Flowers(chosic.com).mp3" id="7_xb31j"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ic0wb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -16,30 +22,120 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.389808, 0.526252, 0.579228, 1)
 
-[node name="MainButtons" type="VBoxContainer" parent="."]
+[node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 381.0
 offset_top = 201.0
 offset_right = 756.0
-offset_bottom = 417.0
-script = ExtResource("1_jo3x7")
+offset_bottom = 380.0
+script = ExtResource("1_7yp3y")
 
-[node name="Play" type="Button" parent="MainButtons"]
+[node name="Play" type="Button" parent="Menu"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Play"
 
-[node name="Settings" type="Button" parent="MainButtons"]
+[node name="Settings" type="Button" parent="Menu"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Settings"
 
-[node name="Quit" type="Button" parent="MainButtons"]
+[node name="Quit" type="Button" parent="Menu"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Quit"
 
-[node name="Control" type="Control" parent="."]
+[node name="SettingsMenu" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+script = ExtResource("2_v0bo2")
+
+[node name="Back" type="Button" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 142.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 35
+text = "Back"
+
+[node name="VolumeText" type="Label" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 93.0
+offset_right = 142.0
+offset_bottom = 146.0
+theme_override_font_sizes/font_size = 32
+text = "Volume:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master" type="Label" parent="SettingsMenu"]
+offset_left = 16.0
+offset_top = 140.0
+offset_right = 101.0
+offset_bottom = 175.0
+theme_override_font_sizes/font_size = 25
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="SettingsMenu"]
+offset_left = 16.0
+offset_top = 185.0
+offset_right = 89.0
+offset_bottom = 220.0
+theme_override_font_sizes/font_size = 25
+text = "Music
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolume" type="HSlider" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 173.0
+offset_right = 154.0
+offset_bottom = 189.0
+max_value = 1.0
+step = 0.0
+
+[node name="MusicVolume" type="HSlider" parent="SettingsMenu"]
+offset_left = 15.0
+offset_top = 223.0
+offset_right = 155.0
+offset_bottom = 239.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="Resolution" type="OptionButton" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 554.0
+offset_right = 147.0
+offset_bottom = 601.0
+script = ExtResource("4_11ea8")
+
+[node name="Confirm" type="Button" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 571.0
+offset_right = 227.0
+offset_bottom = 602.0
+text = "Confirm"
+
+[node name="FullScreen" type="CheckBox" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 605.0
+offset_right = 119.0
+offset_bottom = 636.0
+text = "Fullscreen"
+script = ExtResource("5_oftl1")
+
+[node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xb31j")
+bus = &"Music"
+parameters/looping = true

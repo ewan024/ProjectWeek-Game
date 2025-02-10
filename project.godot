@@ -16,9 +16,15 @@ config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="res://Scenes/UI.tscn"
 
+[audio]
+
+buses/default_bus_layout="res://audio/default_bus_layout.tres"
+
 [display]
 
 window/size/mode=3
+window/size/initial_position_type=0
+window/size/initial_position=Vector2i(1152, 648)
 window/size/borderless=true
 window/stretch/mode="viewport"
 
