@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://btidxe7xyqser"]
+[gd_scene load_steps=6 format=4 uid="uid://buduqpom0du0d"]
 
 [ext_resource type="Texture2D" uid="uid://cp3pn7y5bepu8" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_febe0"]
 [ext_resource type="PackedScene" uid="uid://baou05s22310a" path="res://Character/player.tscn" id="2_7ib6a"]
+[ext_resource type="Script" path="res://Scenes/dash.gd" id="3_ogh60"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cpfi4"]
 texture = ExtResource("1_febe0")
@@ -506,8 +507,11 @@ tile_map_data = PackedByteArray("AAD+/wAAAAADAAIAAAD+/wEAAAADAAMAAAD+/wIAAAADAAQ
 tile_set = SubResource("TileSet_04hgc")
 
 [node name="Player" parent="." instance=ExtResource("2_7ib6a")]
-position = Vector2(167, -24)
+position = Vector2(48, -39)
 scale = Vector2(1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+
+[node name="Dash" type="Node2D" parent="Player"]
+script = ExtResource("3_ogh60")
