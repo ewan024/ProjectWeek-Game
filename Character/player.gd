@@ -1,56 +1,74 @@
 extends CharacterBody2D
 
-class_name Player
 
-# Summary
-# -----------------------------------
-# Controls left right movement for player input when state machine
-# permits movement
-#
-# Also flips sprite direction when moving right or left and 
-# emits signal to let other scripts know what direction the player is facing
+@export var NORMALSPEED : float = 200.0
+@export var JUMP_VELOCITY : float = -250.0
+@export var attack_cooldown := 0.5
+@export var attack_damage := 10
 
-@export var speed : float = 200.0
+@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_hitbox : Area2D = $AttackHitbox
+@onready var dash = $Dash
 
-@onready var sprite : Sprite2D = $Sprite2D
-@onready var animation_tree : AnimationTree = $AnimationTree
-@onready var state_machine : CharacterStateMachine = $CharacterStateMachine
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var animation_locked : bool = false
 var direction : Vector2 = Vector2.ZERO
+var can_attack := true
 
-signal facing_direction_changed(facing_right : bool)
+const dashspeed = 800
+const dashlength = .1
 
-func _ready():
-	animation_tree.active = true
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		
+	if Input.is_action_just_pressed("up") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	if Input.is_action_just_pressed("dash"):
+		dash.start_dash(dashlength)
+	var SPEED = dashspeed if dash.is_dashing() else NORMALSPEED
+
 	direction = Input.get_vector("left", "right", "up", "down")
-	
-	# Control whether to move or not to move
-	if direction.x != 0 && state_machine.check_if_can_move():
-		velocity.x = direction.x * speed
+	if direction:
+		velocity.x = direction.x * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	update_animation_parameters()
-	update_facing_direction()
-	
-func update_animation_parameters():
-	animation_tree.set("parameters/move/blend_position", direction.x)
+	update_animation()
+	update_facing_directions()
 
-func update_facing_direction():
+func update_animation():
+	if not animation_locked:
+		if direction.x != 0:
+			animated_sprite.play("run")
+		else:
+			animated_sprite.play("idle")
+			
+func update_facing_directions():
 	if direction.x > 0:
-		sprite.flip_h = false
+		animated_sprite.flip_h = true
 	elif direction.x < 0:
-		sprite.flip_h = true
+		animated_sprite.flip_h = false
+		
+func _input(event):
+	if event.is_action_pressed("attack") and can_attack:
+		attack()
+		
+func attack():
+	can_attack = false
+	attack_hitbox.monitoring = true
+	attack_hitbox.visible
+	await get_tree().create_timer(attack_cooldown).timeout
+	can_attack = true
 	
-	emit_signal("facing_direction_changed", !sprite.flip_h)
+func _on_AttackHitbox_body_entered(body):
+	if body.is_in_group("enemies"):  
+		body.take_damage(attack_damage) 
