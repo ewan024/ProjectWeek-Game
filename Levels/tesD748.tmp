@@ -545,5 +545,3 @@ position = Vector2(129, 79)
 position = Vector2(214, 87)
 
 [node name="HealthChangedManager" parent="." instance=ExtResource("5_6oeeu")]
-damage_color = null
-heal_color = null
