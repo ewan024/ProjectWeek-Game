@@ -10,7 +10,7 @@ signal on_hit(node : Node, damage_taken : int, knockback_direction : Vector2)
 	set(value):
 		# Call the global emit signal so responders dont need
 		# to connect directly with this object to receive the signal data
-		Signal_Bus.emit_signal("on_health_changed", get_parent(), value - health)
+		SignalBus.emit_signal("on_health_changed", get_parent(), value - health)
 		health = value
 		
 @export var dead_animation_name : String = "dead"
