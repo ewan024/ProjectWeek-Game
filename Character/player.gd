@@ -14,6 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked : bool = false
 var direction : Vector2 = Vector2.ZERO
 var can_attack := true
+var SPEED = NORMALSPEED
 
 const dashspeed = 800
 const dashlength = .1
@@ -31,9 +32,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	if Input.is_action_just_pressed("dash"):
-		dash.start_dash(dashlength)
-	var SPEED = dashspeed if dash.is_dashing() else NORMALSPEED
+
 
 	direction = Input.get_vector("left", "right", "up", "down")
 	if direction:
