@@ -72,6 +72,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Master" type="Label" parent="SettingsMenu"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 140.0
 offset_right = 101.0
@@ -82,6 +83,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Music" type="Label" parent="SettingsMenu"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 185.0
 offset_right = 89.0
@@ -102,6 +104,7 @@ max_value = 1.0
 step = 0.0
 
 [node name="MusicVolume" type="HSlider" parent="SettingsMenu"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 223.0
 offset_right = 155.0
@@ -128,10 +131,10 @@ text = "Confirm"
 
 [node name="FullScreen" type="CheckBox" parent="SettingsMenu"]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 605.0
-offset_right = 119.0
-offset_bottom = 636.0
+offset_left = 17.0
+offset_top = 518.0
+offset_right = 124.0
+offset_bottom = 549.0
 text = "Fullscreen"
 script = ExtResource("5_oftl1")
 

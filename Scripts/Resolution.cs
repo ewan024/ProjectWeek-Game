@@ -7,10 +7,11 @@ public partial class Resolution : OptionButton
 	private Button _applyButton;
 	
 	// List of predefined resolutions (width, height)
-	private (int, int)[] _resolutions = 
+	private readonly (int, int)[] _resolutions = 
 	{
 		(1280, 720),
 		(1920, 1080),
+		(2560, 1600),
 		(2560, 1440),
 		(3840, 2160)
 	};
@@ -21,7 +22,7 @@ public partial class Resolution : OptionButton
 		DisplayServer.WindowSetSize(new Vector2I(1920, 1080));
 		GD.Print("Default resolution set to: 1920x1080");
 		
-		// Initialize nodes
+		// Initialize node
 		_applyButton = GetNode<Button>("../Confirm");
 
 		// Add resolutions to dropdown menu
