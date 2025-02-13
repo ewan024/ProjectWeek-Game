@@ -4,56 +4,55 @@ using Godot;
 
 public partial class SettingsMenu : Control
 {
-	private AudioStreamPlayer2D _audioPlayer;
 	private Button _backButton;
-	private HSlider _volumeSlider;
-	private Control _menu;
-
-	private Button _button;
+	private HSlider _masterSlider;
+	private HSlider _musicSlider;
+	private VBoxContainer _menu;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_backButton = GetNode<Button>("Back");
-		_volumeSlider = GetNode<HSlider>("Volume");
-		_menu = GetNode<Control>("../Menu");
+		_masterSlider = GetNode<HSlider>("MasterVolume");
+		_musicSlider = GetNode<HSlider>("MusicVolume");
+		_menu = GetNode<VBoxContainer>("../Menu");
 		
-		float currentVolume = AudioServer.GetBusVolumeDb(AudioServer.GetBusIndex("Master"));
-		_volumeSlider.Value = DbToLinear(currentVolume);
-
+		float masterVolume = AudioServer.GetBusVolumeDb(AudioServer.GetBusIndex("Master"));
+		_masterSlider.Value = DbToLinear(masterVolume);
+		
+		float musicVolume = AudioServer.GetBusVolumeDb(AudioServer.GetBusIndex("Music"));
+		_masterSlider.Value = DbToLinear(musicVolume);
+		
 		_backButton.Pressed += _OnBackPressed;
-		_volumeSlider.ValueChanged += _OnVolumeChanged;
-		
-		_button = GetNode<Button>("Button");
-		_audioPlayer = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
-		_button.Pressed += _OnButtonPressed;
+		_masterSlider.ValueChanged += OnMasterChanged;
+		_musicSlider.ValueChanged += OnMusicChanged;
 	}
 	
 
-	public void _OnBackPressed()
+	private void _OnBackPressed()
 	{
 		Visible = false;
 		_menu.Visible = true;
 	}
 	
-	public void _OnButtonPressed()
+	private void OnMasterChanged(double value)
 	{
-		_audioPlayer.Play();
-	}
-	
-	private void _OnVolumeChanged(double value)
-	{
-		// Convert linear value (0 to 1) to decibels and set volume
 		float db = LinearToDb((float)value);
 		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Master"), db);
 	}
+
+	private void OnMusicChanged(double value)
+	{
+		float db = LinearToDb((float)value);
+		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music"), db);
+	}
 	
-	private float LinearToDb(float linear)
+	private static float LinearToDb(float linear)
 	{
 		return linear > 0f ? 20f * Mathf.Log(linear) / Mathf.Log(10f) : -80f; // Prevent log(0) errors
 	}
 	
-	private float DbToLinear(float db)
+	private static float DbToLinear(float db)
 	{
 		return Mathf.Pow(10f, db / 20f);
 	}

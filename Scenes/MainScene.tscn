@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://hqdecdjhww83"]
-
-[ext_resource type="Texture2D" uid="uid://dcmu02o2fxbbc" path="res://Images/HealthPlaceHolder.jpg" id="1_50q7v"]
-
-[node name="MainScene" type="Node2D"]
-
-[node name="HealthPlaceHolder" type="Sprite2D" parent="."]
-position = Vector2(437, 209)
-texture = ExtResource("1_50q7v")
