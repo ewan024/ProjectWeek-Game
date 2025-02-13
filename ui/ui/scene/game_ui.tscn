@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://7srfgjhv85k1"]
+
+[ext_resource type="PackedScene" uid="uid://cy4l2xq6pgpeg" path="res://scene/player_health.tscn" id="1_5xdvb"]
+[ext_resource type="PackedScene" uid="uid://k0yguxmomgxx" path="res://scene/boss_health.tscn" id="2_f53uq"]
+
+[node name="game_ui" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
+[node name="healthbar" parent="." instance=ExtResource("1_5xdvb")]
+position = Vector2(-3, 169)
+
+[node name="boss_health" parent="." instance=ExtResource("2_f53uq")]
+position = Vector2(-2, -192)

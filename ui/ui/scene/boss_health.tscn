@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://k0yguxmomgxx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h480"]
+bg_color = Color(0.141273, 0.148498, 0.191238, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tamxv"]
+bg_color = Color(0.239216, 0.317647, 0.556863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="boss_health" type="Node2D"]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -253.0
+offset_top = -12.0
+offset_right = 253.0
+offset_bottom = 15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6h480")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tamxv")
+value = 100.0
+show_percentage = false
