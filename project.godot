@@ -20,9 +20,14 @@ config/icon="res://Images/GameJamGameLogo.png"
 
 buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
+[autoload]
+
+SignalBus="*res://SignalBus.gd"
+
 [display]
 
 window/size/initial_position_type=0
+window/size/borderless=true
 window/stretch/mode="canvas_items"
 
 [dotnet]

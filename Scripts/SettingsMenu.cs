@@ -37,7 +37,6 @@ public partial class SettingsMenu : Control
 	
 	private void OnMasterChanged(double value)
 	{
-		// Convert linear value (0 to 1) to decibels and set volume
 		float db = LinearToDb((float)value);
 		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Master"), db);
 	}

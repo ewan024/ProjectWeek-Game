@@ -26,7 +26,7 @@ public partial class MainButtons : VBoxContainer
 
 	private void _OnPlayPressed()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
+		GetTree().ChangeSceneToFile("res://Scenes/MainGame.tscn");
 	}
 
 	private void _OnSettingsPressed()

@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://rfkln7ir5l7l"]
+
+[ext_resource type="PackedScene" uid="uid://b2la603gmtnng" path="res://Scenes/Player.tscn" id="1_rga0p"]
+[ext_resource type="Texture2D" uid="uid://do7fomgpen3q6" path="res://Images/pixil-frame-0.png" id="3_4lews"]
+[ext_resource type="PackedScene" uid="uid://bj0t4bbxwly40" path="res://Scenes/Enemy.tscn" id="3_80xju"]
+[ext_resource type="Script" path="res://Scripts/NextScene.cs" id="4_ioko7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4w7n3"]
+size = Vector2(2080.41, 67.8486)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwob5"]
+size = Vector2(2080.41, 67.8486)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w3rq"]
+size = Vector2(2080.41, 15.7645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77xri"]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_rga0p")]
+position = Vector2(466, 713)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Enemy" parent="." instance=ExtResource("3_80xju")]
+position = Vector2(357, 715)
+
+[node name="Map" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(633, 922)
+scale = Vector2(0.202675, 0.202675)
+texture = ExtResource("3_4lews")
+
+[node name="ColorRect" type="ColorRect" parent="Map"]
+offset_left = -5116.57
+offset_top = -680.893
+offset_right = -5076.57
+offset_bottom = -640.893
+scale = Vector2(253.161, 60.1449)
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map"]
+position = Vector2(14.8023, 0)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Map/StaticBody2D"]
+visible = false
+position = Vector2(-24.6697, -5151.1)
+rotation = 0.00567219
+scale = Vector2(4.93401, 4.93401)
+shape = SubResource("RectangleShape2D_4w7n3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(-5151.11, -2333.79)
+rotation = -1.57254
+scale = Vector2(2.94141, 4.92149)
+shape = SubResource("RectangleShape2D_uwob5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(5175.78, -2580.49)
+rotation = -1.5797
+scale = Vector2(3.6154, 24.3444)
+shape = SubResource("RectangleShape2D_2w3rq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2(-103.614, -685.826)
+rotation = 0.00413308
+scale = Vector2(4.93401, 4.93401)
+shape = SubResource("RectangleShape2D_4w7n3")
+
+[node name="ColorRect2" type="ColorRect" parent="Map"]
+z_index = -1
+offset_left = -7445.42
+offset_top = -7317.14
+offset_right = -7405.42
+offset_bottom = -7277.14
+scale = Vector2(70.6866, 232.023)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Map"]
+z_index = -1
+offset_left = 4973.48
+offset_top = -7248.06
+offset_right = 5013.48
+offset_bottom = -7208.06
+scale = Vector2(70.6866, 225.708)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Map"]
+z_index = -1
+offset_left = -5373.14
+offset_top = -7336.87
+offset_right = -5333.14
+offset_bottom = -7296.87
+scale = Vector2(274.604, 60.1449)
+color = Color(0, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+z_index = 10
+position = Vector2(633, 922)
+scale = Vector2(0.202675, 0.202675)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_ioko7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-222.03, -1549.28)
+scale = Vector2(103.762, -67.1466)
+shape = SubResource("RectangleShape2D_77xri")
